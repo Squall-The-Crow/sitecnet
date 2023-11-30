@@ -25,7 +25,8 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
+        'security/sitecnet_security.xml',
+        'security/ir.model.access.csv',        
         'views/checklist',
         'views/complemento',
         'views/herencias',
