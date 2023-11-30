@@ -90,15 +90,15 @@
 
         <record id="action_checklist" model="ir.actions.act_window">
             <field name="name">Checklist</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="res_model">sitecnet.checklist</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <record id="action_tareas" model="ir.actions.act_window">
             <field name="name">Tareas</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="res_model">sitecnet.tareas</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
 
         </record>
