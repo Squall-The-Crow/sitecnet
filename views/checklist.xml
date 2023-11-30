@@ -39,18 +39,18 @@
                             <field name="fecha"/>
                             <field name="checklist"/>
                             <field name="periodo"/>
-                            <group class="oe_left oe_button_box" name="state_buttons">
+                            <!-- <group class="oe_left oe_button_box" name="state_buttons">
                             <button string="pendiente" type="object" name="set_state_pendiente" class="oe_stat_button" groups="base.group_user"/>
-                            <button string="realizada" type="object" name="set_state_realizada" class="oe_stat_button" groups="base.group_user"/>
+                            <button string="realizada" type="object" name="set_state_realizada" class="oe_stat_button" groups="base.group_user"/> 
+                        </group>-->
                         </group>
-                        </group>
-                        <group>
+                        <!-- <group>
                            <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
                         <button string="mandar ticket" type="object" class="oe_highlight" icon="fa-envelope" name="send_ticket"/>
-                        </group>
+                        </group> -->
                     </sheet>
                 </form>
-                <script type="text/scss" src='sitecnet\static\src\scss\checklist_styles.scss'/>
+                <!-- <script type="text/scss" src='sitecnet\static\src\scss\checklist_styles.scss'/> -->
             </field>
         </record>
     </data>
