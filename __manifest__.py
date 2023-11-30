@@ -27,6 +27,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/checklist',
+        'views/complemento',
+        'views/herencias',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -8,13 +8,13 @@ class complemento_usuarios(models.Model):
 
     name = fields.Char('Nombre')
     depto = fields.Char('Departamento')
-    telefono = fields.Char('Cedula Profesional')
+    telefono = fields.Char('Telefono')
     correo = fields.Char('Correo')
     tier = fields.Many2one('product.template', string='Tier') #Asignar filtro de solo servicios
     equipos = fields.One2many('sitecnet.complemento_equipos', 'usuario', 'Equipos')
     software = fields.One2many('sitecnet.complemento_software', 'name', 'Software permitido')
     cliente = fields.Many2one('res.partner', 'Cliente')
-    carpetas = fields.Many2many('sitecnet.carpetas', 'Carpetas')
+    carpetas = fields.Many2many('sitecnet.carpetas', 'carpeta_usuario_rel', 'usuario_id', 'carpeta_id', 'Carpetas')
 
 
 
@@ -65,11 +65,13 @@ class complemento_proveedor(models.Model):
 
 class arrendamiento(models.Model):
     _name = 'sitecnet.arrendamiento'
-    _description = "Información complementaria para proveedores externos"
+    _description = "Información complementaria para equipos arrendados"
 
     name = fields.Char('Contrato')
     equipos = fields.One2many('sitecnet.complemento_equipos', 'arrendamiento', 'Equipos arrendados')
-    tiempo = fields.Int('Tiempo de contratacion')
+    tiempo = fields.Char('Tiempo de contratacion')
+    inicio = fields.Date('inicio de arrendamiento')
+    fin = fields.Date('Fin de arrendamiento')
     cliente = fields.Many2one('res.partner', 'Cliente')
     #complemento para archivo de contrato
 
@@ -80,7 +82,7 @@ class software(models.Model):
     name = fields.Char('Nombre')
     licencia = fields.Char('Licencia')
     cliente = fields.Many2one('res.partner', 'Cliente')
-    vigencia = fields.Char('Cedula Profesional')#Asignar filtro de solo perpetual = false
+    renovacion = fields.Char('Periodo de renovación')#Asignar filtro de solo perpetual = false
     perpetual = fields.Boolean('Perpetual')
     adquisicion = fields.Selection([
     	("Rentado","Rentado"),
@@ -88,6 +90,18 @@ class software(models.Model):
     	("Externo","Externo")], 
     	'Adquisicion')
     proveedor = fields.Many2one('sitecnet.proveedor', 'Proveedor Externo')
+
+class CarpetaUsuarioRel(models.Model):
+    _name = 'carpeta_usuario_rel'
+    carpeta_id = fields.Many2one('sitecnet.carpetas', 'Carpeta')
+    usuario_id = fields.Many2one('sitecnet.complemento_usuarios', 'Usuario')
+    permisos = fields.Selection([
+    	("Lectura","Lectura"),
+    	("Escritura","Escritura"),
+    	("Administrador","Administrador"),
+        ("Bloqueado","Bloqueado")], 
+    	'Permisos')
+
 
 class carpetas(models.Model):
     _name = 'sitecnet.carpetas'
@@ -99,13 +113,7 @@ class carpetas(models.Model):
     	("Local","Local"),
     	("Nube","Nube")], 
     	'Alojamiento')
-    usuario = fields.Many2many('sitecnet.complemento_usuarios', 'Usuario')
-    permisos = fields.Selection([
-    	("Lectura","Lectura"),
-    	("Escritura","Escritura"),
-    	("Administrador","Administrador"),
-        ("Bloqueado","Bloqueado")], 
-    	'Permisos')
+    usuarios = fields.Many2many('sitecnet.complemento_usuarios', 'carpeta_usuario_rel', 'carpeta_id', 'usuario_id', 'Usuarios')
     cliente = fields.Many2one('res.partner', 'Cliente')
 
 class servicios(models.Model):
@@ -113,12 +121,6 @@ class servicios(models.Model):
     _description = "Información complementaria de servicios contratados"
 
     name = fields.Char('Nombre del servicio')
-    categoria = fields.Many2one('Categoria')
+    cliente = fields.Many2one('res.partner', 'Cliente')
     terminos = fields.Text('Terminos del servicio')
     checklist = fields.One2many('sitecnet.checklist', 'name', 'Checklist asociados')
-
-class servicios(models.Model):
-    _name = 'sitecnet.servicios'
-    _description = "Información complementaria de categoria de servicios"
-
-    name = fields.Char('Nombre de la categoria')

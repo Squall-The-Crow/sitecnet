@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+  <data>
+
+  <record id="view_form_sitecnet_complemento_usuarios" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_usuarios.form.view</field>
+      <field name="model">sitecnet.complemento_usuarios</field>
+      <field name="arch" type="xml">
+        <form string="Usuarios">
+            <group>
+                <field name="name"/>
+                <field name="depto"/>
+                <field name="telefono"/>
+                <field name="correo"/>
+                <field name="tier"/>
+                <field name="equipos"/>
+                <field name="software"/>
+                <field name="cliente"/>
+                <field name="carpetas"/>
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_tree_sitecnet_complemento_usuarios" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_usuarios.tree.view</field>
+      <field name="model">sitecnet.complemento_usuarios</field>
+      <field name="arch" type="xml">
+        <tree string="Usuarios">
+            <field name="name"/>
+            <field name="depto"/>
+            <field name="telefono"/>
+            <field name="correo"/>
+            <field name="tier"/>
+            <field name="equipos"/>
+            <field name="software"/>
+            <field name="cliente"/>
+            <field name="carpetas"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_form_sitecnet_complemento_equipos" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_equipos.form.view</field>
+      <field name="model">sitecnet.complemento_equipos</field>
+      <field name="arch" type="xml">
+        <form string="Equipos">
+            <group>
+                <field name="name"/>
+                <field name="cliente"/>
+                <field name="tipo"/>
+                <field name="fecha_compra"/>
+                <field name="factura"/>
+                <field name="adquisicion"/>
+                <field name="proveedor"/>
+                <field name="garantia"/>
+                <field name="arrendamiento"/>
+                <field name="nombre"/>
+                <field name="usuario"/>
+                <field name="agente_inventario"/>
+                <field name="agente_soporte"/>
+                <field name="agente_seguridad"/>
+                <field name="agente_seguridad_red"/>
+                <field name="agente_seguridad_dlp"/>
+                <field name="agente_remoto_alternativo"/>
+                <field name="autenticacion"/>
+                <field name="registrado"/>
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_tree_sitecnet_complemento_equipos" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_equipos.tree.view</field>
+      <field name="model">sitecnet.complemento_equipos</field>
+      <field name="arch" type="xml">
+        <tree string="Equipos">
+            <field name="name"/>
+            <field name="cliente"/>
+            <field name="tipo"/>
+            <field name="fecha_compra"/>
+            <field name="factura"/>
+            <field name="adquisicion"/>
+            <field name="proveedor"/>
+            <field name="garantia"/>
+            <field name="arrendamiento"/>
+            <field name="nombre"/>
+            <field name="usuario"/>
+            <field name="agente_inventario"/>
+            <field name="agente_soporte"/>
+            <field name="agente_seguridad"/>
+            <field name="agente_seguridad_red"/>
+            <field name="agente_seguridad_dlp"/>
+            <field name="agente_remoto_alternativo"/>
+            <field name="autenticacion"/>
+            <field name="registrado"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_form_sitecnet_complemento_proveedor" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_proveedor.form.view</field>
+      <field name="model">sitecnet.proveedor</field>
+      <field name="arch" type="xml">
+        <form string="Proveedores">
+            <group>
+                <field name="name"/>
+                <field name="direccion"/>
+                <field name="telefono"/>
+                <field name="correo"/>
+                <field name="telefono2"/>
+                <field name="horario"/>
+                <field name="notas"/>
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_tree_sitecnet_complemento_proveedor" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_proveedor.tree.view</field>
+      <field name="model">sitecnet.proveedor</field>
+      <field name="arch" type="xml">
+        <tree string="Proveedores">
+            <field name="name"/>
+            <field name="direccion"/>
+            <field name="telefono"/>
+            <field name="correo"/>
+            <field name="telefono2"/>
+            <field name="horario"/>
+            <field name="notas"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_form_sitecnet_complemento_software" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_software.form.view</field>
+      <field name="model">sitecnet.software</field>
+      <field name="arch" type="xml">
+        <form string="Software">
+            <group>
+                <field name="name"/>
+                <field name="licencia"/>
+                <field name="cliente"/>
+                <field name="renovacion"/>
+                <field name="proveedor"/>
+                <field name="perpetual"/>
+                <field name="adquisicion"/>
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_tree_sitecnet_complemento_software" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_software.tree.view</field>
+      <field name="model">sitecnet.software</field>
+      <field name="arch" type="xml">
+        <tree string="Software">
+            <field name="name"/>
+            <field name="licencia"/>
+            <field name="cliente"/>
+            <field name="renovacion"/>
+            <field name="proveedor"/>
+            <field name="perpetual"/>
+            <field name="adquisicion"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_form_sitecnet_complemento_carpetas" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_carpetas.form.view</field>
+      <field name="model">sitecnet.carpetas</field>
+      <field name="arch" type="xml">
+        <form string="Carpetas">
+            <group>
+                <field name="name"/>
+                <field name="ubicacion"/>
+                <field name="alojado"/>
+                <field name="usuarios"/>
+                <field name="cliente"/>
+            </group>
+        </form>
+      </field>
+      </record>
+
+    <record id="view_tree_sitecnet_complemento_carpetas" model="ir.ui.view">
+        <field name="name">sitecnet.complemento_carpetas.tree.view</field>
+        <field name="model">sitecnet.carpetas</field>
+        <field name="arch" type="xml">
+            <tree string="Carpetas">
+                <field name="name"/>
+                <field name="ubicacion"/>
+                <field name="alojado"/>
+                <field name="usuarios"/>
+                <field name="cliente"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_sitecnet_complemento_arrendamiento" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_arrendamiento.form.view</field>
+      <field name="model">sitecnet.arrendamiento</field>
+      <field name="arch" type="xml">
+        <form string="Arrendamiento">
+            <group>
+                <field name="name"/>
+                <field name="ubicacion"/>
+                <field name="alojado"/>
+                <field name="usuarios"/>
+                <field name="cliente"/>
+            </group>
+        </form>
+      </field>
+      </record>
+
+    <record id="view_tree_sitecnet_complemento_arrendamiento" model="ir.ui.view">
+        <field name="name">sitecnet.complemento_arrendamiento.tree.view</field>
+        <field name="model">sitecnet.arrendamiento</field>
+        <field name="arch" type="xml">
+            <tree string="Arrendamiento">
+                <field name="name"/>
+                <field name="ubicacion"/>
+                <field name="alojado"/>
+                <field name="usuarios"/>
+                <field name="cliente"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_sitecnet_complemento_servicios" model="ir.ui.view">
+      <field name="name">sitecnet.complemento_servicios.form.view</field>
+      <field name="model">sitecnet.servicios</field>
+      <field name="arch" type="xml">
+        <form string="Servicios">
+            <group>
+                <field name="name"/>
+                <field name="cliente"/>
+                <field name="categoria"/>
+                <field name="terminos"/>
+                <field name="checklist"/>
+            </group>
+        </form>
+      </field>
+      </record>
+
+    <record id="view_tree_sitecnet_complemento_servicios" model="ir.ui.view">
+        <field name="name">sitecnet.complemento_servicios.tree.view</field>
+        <field name="model">sitecnet.servicios</field>
+        <field name="arch" type="xml">
+            <tree string="Servicios">
+                <field name="name"/>
+                <field name="cliente"/>
+                <field name="categoria"/>
+                <field name="terminos"/>
+                <field name="checklist"/>
+            </tree>
+        </field>
+        </record>
+
+        <record id="action_complemento_usuarios" model="ir.actions.act_window">
+            <field name="name">complemento_usuarios</field>
+            <field name="res_model">sitecnet.complemento_usuarios</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_complemento_equipos" model="ir.actions.act_window">
+            <field name="name">complemento_equipos</field>
+            <field name="res_model">sitecnet.complemento_equipos</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_complemento_proveedor" model="ir.actions.act_window">
+            <field name="name">complemento_proveedor</field>
+            <field name="res_model">sitecnet.proveedor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_complemento_software" model="ir.actions.act_window">
+            <field name="name">complemento_software</field>
+            <field name="res_model">sitecnet.software</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_complemento_carpetas" model="ir.actions.act_window">
+            <field name="name">complemento_carpetas</field>
+            <field name="res_model">sitecnet.carpetas</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_complemento_arrendamiento" model="ir.actions.act_window">
+            <field name="name">complemento_arrendamiento</field>
+            <field name="res_model">sitecnet.arrendamiento</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_complemento_servicios" model="ir.actions.act_window">
+            <field name="name">complemento_servicios</field>
+            <field name="res_model">sitecnet.servicios</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="Complementos" id="sitecnet.menu_complemento" sequence="60" parent="contacts.menu_contacts"/>
+        <menuitem name="Usuarios" id="sitecnet.menu_complemento_usuarios" parent="sitecnet.menu_complemento" action="action_complemento_usuarios"/>
+        <menuitem name="Equipos" id="sitecnet.menu_complemento_equipos" parent="sitecnet.menu_complemento" action="action_complemento_equipos"/>
+        <menuitem name="Proveedores" id="sitecnet.menu_complemento_proveedor" parent="sitecnet.menu_complemento" action="action_complemento_proveedor"/>
+        <menuitem name="Software" id="sitecnet.menu_complemento_software" parent="sitecnet.menu_complemento" action="action_complemento_software"/>
+        <menuitem name="Carpetas" id="sitecnet.menu_complemento_carpetas" parent="sitecnet.menu_complemento" action="action_complemento_carpetas"/>
+        <menuitem name="Arrendamiento" id="sitecnet.menu_complemento_arrendamiento" parent="sitecnet.menu_complemento" action="action_complemento_arrendamiento"/>
+        <menuitem name="Servicios" id="sitecnet.menu_complemento_servicios" parent="sitecnet.menu_complemento" action="action_complemento_servicios"/>
+    </data>
+</odoo>       
+
+
+

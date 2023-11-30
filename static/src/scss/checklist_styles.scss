@@ -1,0 +1,23 @@
+.oe_stat_button {
+    color: white !important;
+}
+
+.oe_stat_button.error {
+    background-color: #ff0000 !important; /* Color rojo para tareas pendientes */
+}
+
+.oe_stat_button.realizada {
+    background-color: #00ff00 !important; /* Color verde para tareas completadas */
+}
+
+.oe_stat_button.caducada {
+    background-color: #FF8000 !important;
+}
+
+.oe_stat_button.pendiente {
+    background-color: #FFFF00 !important;
+}
+
+.oe_stat_button.programada {
+    background-color: #0000FF !important;
+}

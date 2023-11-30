@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+  <data>
+    <record id="view_partner_inherit_form" model="ir.ui.view">
+      <field name="name">view.partner.inherit.form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+          <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Cotizaciones">
+            <field name="cotizaciones" />
+        </page>
+        </xpath>
+        <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Software">
+            <field name="software" />
+        </page>
+        </xpath>
+        <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Usuarios">
+            <field name="usuarios" />
+        </page>
+        </xpath>
+         <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Equipos">
+            <field name="equipos" />
+        </page>
+        </xpath>
+         <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Carpetas">
+            <field name="carpetas" />
+        </page>
+        </xpath>
+         <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Checklist">
+            <field name="checklist" />
+        </page>
+        </xpath>
+        <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Servicios">
+            <field name="servicios" />
+        </page>
+        </xpath>
+      </field>
+      </record>
+
+      
+  </data>
+</odoo>
