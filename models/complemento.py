@@ -12,7 +12,7 @@ class complemento_usuarios(models.Model):
     correo = fields.Char('Correo')
     tier = fields.Many2one('product.template', string='Tier') #Asignar filtro de solo servicios
     equipos = fields.One2many('sitecnet.complemento_equipos', 'usuario', 'Equipos')
-    software = fields.One2many('sitecnet.complemento_software', 'name', 'Software permitido')
+    software = fields.One2many('sitecnet.complemento_software', 'usuario', 'Software permitido')
     cliente = fields.Many2one('res.partner', 'Cliente')
     carpetas = fields.Many2many('sitecnet.carpetas', 'carpeta_usuario_rel', 'usuario_id', 'carpeta_id', 'Carpetas')
 
@@ -39,7 +39,7 @@ class complemento_equipos(models.Model):
     arrendamiento = fields.Many2one('sitecnet.arrendamiento') #filtrar por adquisición rentado
     nombre = fields.Char('Nombre del dispositivo')
     usuario = fields.Many2one('sitecnet.complemento_usuarios', 'Usuario')
-    cliente = fields.Many2one('res.partner', 'Cliente', related="usuario.cliente.id", store=True)
+    cliente = fields.Many2one('res.partner', 'Cliente') #related="usuario.cliente.id", store=True)
     agente_inventario = fields.Boolean('AG Inventario')
     agente_soporte = fields.Boolean('AG Soporte')
     agente_seguridad = fields.Boolean('AG Seguridad')
@@ -90,6 +90,7 @@ class software(models.Model):
     	("Externo","Externo")], 
     	'Adquisicion')
     proveedor = fields.Many2one('sitecnet.proveedor', 'Proveedor Externo')
+    usuario = fields.Many2one('sitecnet.complemento_usuarios', 'Usuario')
 
 class CarpetaUsuarioRel(models.Model):
     _name = 'carpeta_usuario_rel'

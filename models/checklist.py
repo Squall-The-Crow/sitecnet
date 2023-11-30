@@ -30,40 +30,40 @@ class checklist(models.Model):
     tareas = fields.One2many('sitecnet.tareas', 'checklist', 'Tareas')
     inicio = fields.Date('inicio de las tareas')
 
-    # def generate_recurring_tasks(self):
-    #     for task_list in self:
-    #         start_date = task_list.inicio
-    #         end_date = task_list.inicio + relativedelta(years=1)
+    def generate_recurring_tasks(self):
+        for task_list in self:
+            start_date = task_list.inicio
+            end_date = task_list.inicio + relativedelta(years=1)
 
-    #         if task_list.frequency == 'daily':
-    #             interval_type = 'days'
-    #         elif task_list.frequency == 'weekly':
-    #             interval_type = 'weeks'
-    #         elif task_list.frequency == 'monthly':
-    #             interval_type = 'months'
-    #         elif task_list.frequency == 'quarterly':
-    #             interval_type = 'months'
-    #         elif task_list.frequency == 'semiannual':
-    #             interval_type = 'months'
-    #         elif task_list.frequency == 'annual':
-    #             interval_type = 'years'
-    #         else:
-    #             continue
+            if task_list.frequency == 'daily':
+                interval_type = 'days'
+            elif task_list.frequency == 'weekly':
+                interval_type = 'weeks'
+            elif task_list.frequency == 'monthly':
+                interval_type = 'months'
+            elif task_list.frequency == 'quarterly':
+                interval_type = 'months'
+            elif task_list.frequency == 'semiannual':
+                interval_type = 'months'
+            elif task_list.frequency == 'annual':
+                interval_type = 'years'
+            else:
+                continue
 
-    #         # Calcular la fecha de inicio del próximo intervalo
-    #         current_date = start_date
-    #         while current_date < end_date:
-    #             for task in task_list.tareas:
-    #                 task_date = current_date + relativedelta(**{interval_type: task_list.recurrence_interval})
-    #                 year, week, _ = task_date.isocalendar()
-    #                 self.env['sitecnet.tareas'].create({
-    #                     'name': str(task_list.tareas.name) + ' - ' + str(week),
-    #                     'checklist': task_list.id,
-    #                     'fecha': task_date,
-    #                     'cliente': task.cliente.id,  # Cambio aquí
-    #                     'periodo': str(year) + ' - ' + str(week),
-    #                 })
-    #             current_date += relativedelta(**{interval_type: task_list.recurrence_interval})
+            # Calcular la fecha de inicio del próximo intervalo
+            current_date = start_date
+            while current_date < end_date:
+                for task in task_list.tareas:
+                    task_date = current_date + relativedelta(**{interval_type: task_list.recurrence_interval})
+                    year, week, _ = task_date.isocalendar()
+                    self.env['sitecnet.tareas'].create({
+                        'name': str(task_list.tareas.name) + ' - ' + str(week),
+                        'checklist': task_list.id,
+                        'fecha': task_date,
+                        'cliente': task.cliente.id,  # Cambio aquí
+                        'periodo': str(year) + ' - ' + str(week),
+                    })
+                current_date += relativedelta(**{interval_type: task_list.recurrence_interval})
 
 class tareas(models.Model):
     _name = 'sitecnet.tareas'
