@@ -27,9 +27,9 @@
     'data': [
         'security/sitecnet_security.xml',
         'security/ir.model.access.csv',        
-        'views/checklist',
-        'views/complemento',
-        'views/herencias',
+        'views/checklist.xml',
+        'views/complemento.xml',
+        'views/herencias.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
