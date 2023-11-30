@@ -103,7 +103,7 @@ class carpetas(models.Model):
     	("Local","Local"),
     	("Nube","Nube")], 
     	'Alojamiento')
-    usuarios = fields.Manyone('sitecnet.complemento_usuarios',  string='Usuarios Relacionados')
+    usuarios = fields.Many2one('sitecnet.complemento_usuarios',  string='Usuarios Relacionados')
     cliente = fields.Many2one('res.partner', 'Cliente')
 
 class servicios(models.Model):
