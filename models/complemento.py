@@ -14,7 +14,7 @@ class complemento_usuarios(models.Model):
     equipos = fields.One2many('sitecnet.complemento_equipos', 'usuario', 'Equipos')
     software = fields.One2many('sitecnet.software', 'usuario', 'Software permitido')
     cliente = fields.Many2one('res.partner', 'Cliente')
-    carpetas = fields.Many2many('sitecnet.carpetas', 'carpeta_usuario_rel', 'usuario', 'carpeta', string='Carpetas Relacionadas')
+    carpetas = fields.Many2one('sitecnet.carpetas', string='Carpetas Relacionadas')
 
 
 
@@ -92,24 +92,6 @@ class software(models.Model):
     proveedor = fields.Many2one('sitecnet.proveedor', 'Proveedor Externo')
     usuario = fields.Many2one('sitecnet.complemento_usuarios', 'Usuario')
 
-class CarpetaUsuarioRel(models.Model):
-    _name = 'carpeta_usuario_rel'
-    _description = "Tabla relacional de carpetas y usuarios"
-
-    carpeta = fields.Many2one('sitecnet.carpetas', string='Carpeta', index=True, primary_key=False)
-    usuario = fields.Many2one('sitecnet.complemento_usuarios', string='Usuario', index=True, primary_key=False)
-    permisos = fields.Selection([
-        ('lectura', 'Lectura'),
-        ('escritura', 'Escritura'),
-        ('propietario', 'Propietario')],
-        string='Nivel de acceso',
-        default='lectura',
-        help='Tipo de relación entre Carpeta y Usuario'
-    )
-
-    _sql_constraints = [
-        ('relacion_unico', 'unique(carpeta, usuario, permisos)', 'La relación debe ser única por carpeta y usuario con un nivel de acceso específico.'),
-    ]
 
 class carpetas(models.Model):
     _name = 'sitecnet.carpetas'
@@ -121,7 +103,7 @@ class carpetas(models.Model):
     	("Local","Local"),
     	("Nube","Nube")], 
     	'Alojamiento')
-    usuarios = fields.Many2many('sitecnet.complemento_usuarios', 'carpeta_usuario_rel', 'carpeta', 'usuario', string='Usuarios Relacionados')
+    usuarios = fields.Manyone('sitecnet.complemento_usuarios',  string='Usuarios Relacionados')
     cliente = fields.Many2one('res.partner', 'Cliente')
 
 class servicios(models.Model):
