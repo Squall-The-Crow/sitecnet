@@ -13,7 +13,7 @@ access_complemento_carpetas_tecnico,sitecnet.carpetas,model_sitecnet_carpetas,te
 access_complemento_carpetas_jefes,sitecnet.carpetas,model_sitecnet_carpetas,jefe_operaciones_grupo_general,1,1,1,1
 access_complemento_servicios_tecnico,sitecnet.servicios,model_sitecnet_servicios,tecnico_grupo_base,1,1,0,0
 access_complemento_servicios_jefes,sitecnet.servicios,model_sitecnet_servicios,jefe_operaciones_grupo_general,1,1,1,1
-access_checklist_tecnico,sitecnet.checklist,model_itecnet_checklist,tecnico_grupo_base,1,1,0,0
+access_checklist_tecnico,sitecnet.checklist,model_sitecnet_checklist,tecnico_grupo_base,1,1,0,0
 access_checklist_jefes,sitecnet.checklist,model_sitecnet_checklist,jefe_operaciones_grupo_general,1,1,1,1
 access_tareas_tecnico,sitecnet.tareas,model_sitecnet_tareas,tecnico_grupo_base,1,1,0,0
 access_tareas_jefes,sitecnet.tareas,model_sitecnet_tareas,jefe_operaciones_grupo_general,1,1,1,1
