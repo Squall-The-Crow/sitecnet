@@ -108,7 +108,7 @@ class carpetas(models.Model):
     _description = "Información complementaria de permisos de carpetas"
 
     name = fields.Char('Nombre de la carpeta')
-    ubicacion = fields.char('Ubicación de la carpeta')
+    ubicacion = fields.Char('Ubicación de la carpeta')
     alojado = fields.Selection([
     	("Local","Local"),
     	("Nube","Nube")], 
