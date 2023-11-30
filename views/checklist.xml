@@ -16,7 +16,7 @@
                             <field name="tareas" widget="many2many_tags" options="{'no_create_edit': True}" placeholder="Add Tasks..."/>
                         </group>
                         <footer>
-                            <button string="Generar Tareas" type="object" class="oe_highlight" icon="fa-refresh" name="generate_recurring_tasks"/>
+                           <!-- <button string="Generar Tareas" type="object" class="oe_highlight" icon="fa-refresh" name="generate_recurring_tasks"/>-->
                         </footer>
                     </sheet>
                 </form>
