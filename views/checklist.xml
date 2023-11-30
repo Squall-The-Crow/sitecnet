@@ -107,7 +107,7 @@
         <menuitem id="menu_checklist" name="Checklist" parent="sitecnet_menu_root" action="action_checklist"/>
         <menuitem id="menu_tareas" name="Tareas" parent="sitecnet_menu_root" action="action_tareas"/>
 
-
+</data>
 
 
 </odoo>
