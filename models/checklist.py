@@ -32,9 +32,9 @@ class checklist(models.Model):
 
     def generate_recurring_tasks(self):
         for task_list in self:
-            start_date = task_list.inicio  # Change here
-            end_date = task_list.inicio + relativedelta(years=1)  # Change here
-            cliente = task_list.cliente  # Change here
+            start_date = task_list.inicio
+            end_date = task_list.inicio + relativedelta(years=1)
+            cliente = task_list.cliente.id  # Cambio aquí
 
             if task_list.frequency == 'daily':
                 interval_type = 'days'
@@ -62,7 +62,7 @@ class checklist(models.Model):
                         'description': task.description,
                         'checklist': task_list.id,
                         'fecha': task_date,
-                        'cliente': cliente.id,  # Change here
+                        'cliente': cliente,  # Cambio aquí
                         'periodo': str(year) + ' - ' + str(week),
                     })
                 current_date += relativedelta(**{interval_type: task_list.recurrence_interval})
