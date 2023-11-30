@@ -14,7 +14,7 @@ class complemento_usuarios(models.Model):
     equipos = fields.One2many('sitecnet.complemento_equipos', 'usuario', 'Equipos')
     software = fields.One2many('sitecnet.software', 'usuario', 'Software permitido')
     cliente = fields.Many2one('res.partner', 'Cliente')
-    carpetas = fields.Many2many('sitecnet.carpetas', 'carpeta_usuario_rel', 'usuario_id', 'carpeta_id', string='Carpetas Relacionadas')
+    carpetas = fields.Many2many('sitecnet.carpetas', 'carpeta_usuario_rel', 'usuario', 'carpeta', string='Carpetas Relacionadas')
 
 
 
@@ -96,8 +96,8 @@ class CarpetaUsuarioRel(models.Model):
     _name = 'carpeta_usuario_rel'
     _description = "Tabla relacional de carpetas y usuarios"
 
-    carpeta_id = fields.Many2one('sitecnet.carpetas', string='Carpeta', index=True)
-    usuario_id = fields.Many2one('sitecnet.complemento_usuarios', string='Usuario', index=True)
+    carpeta = fields.Many2one('sitecnet.carpetas', string='Carpeta', index=True, primary_key=False)
+    usuario = fields.Many2one('sitecnet.complemento_usuarios', string='Usuario', index=True, primary_key=False)
     permisos = fields.Selection([
         ('lectura', 'Lectura'),
         ('escritura', 'Escritura'),
@@ -108,7 +108,7 @@ class CarpetaUsuarioRel(models.Model):
     )
 
     _sql_constraints = [
-        ('relacion_unico', 'unique(carpeta_id, usuario_id, permisos)', 'La relación debe ser única por carpeta y usuario.'),
+        ('relacion_unico', 'unique(carpeta, usuario, permisos)', 'La relación debe ser única por carpeta y usuario con un nivel de acceso específico.'),
     ]
 
 class carpetas(models.Model):
@@ -121,7 +121,7 @@ class carpetas(models.Model):
     	("Local","Local"),
     	("Nube","Nube")], 
     	'Alojamiento')
-    usuarios = fields.Many2many('sitecnet.complemento_usuarios', 'carpeta_usuario_rel', 'carpeta_id', 'usuario_id', string='Usuarios Relacionados')
+    usuarios = fields.Many2many('sitecnet.complemento_usuarios', 'carpeta_usuario_rel', 'carpeta', 'usuario', string='Usuarios Relacionados')
     cliente = fields.Many2one('res.partner', 'Cliente')
 
 class servicios(models.Model):
