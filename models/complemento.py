@@ -77,7 +77,7 @@ class arrendamiento(models.Model):
 
 class software(models.Model):
     _name = 'sitecnet.software'
-    _description = "Información complementaria de software"
+    _description = "Información complementaria de softwar"
 
     name = fields.Char('Nombre')
     licencia = fields.Char('Licencia')
