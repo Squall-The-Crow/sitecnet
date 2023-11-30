@@ -34,6 +34,7 @@ class checklist(models.Model):
         for task_list in self:
             start_date = self.inicio
             end_date = self.inicio + relativedelta(years=1)
+            cliente = self.cliente
 
             if task_list.frequency == 'daily':
                 interval_type = 'days'
@@ -61,7 +62,7 @@ class checklist(models.Model):
                         'description': task.description,
                         'checklist': task_list.id,
                         'fecha': task_date,
-                        'cliente': task_list.cliente.id,
+                        'cliente': cliente.id,
                         'periodo': str(year) + ' - ' + str(week),  # Change here
                     })
                 current_date += relativedelta(**{interval_type: task_list.recurrence_interval})
