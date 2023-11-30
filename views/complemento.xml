@@ -203,9 +203,10 @@
         <form string="Arrendamiento">
             <group>
                 <field name="name"/>
-                <field name="ubicacion"/>
-                <field name="alojado"/>
-                <field name="usuarios"/>
+                <field name="equipos"/>
+                <field name="tiempo"/>
+                <field name="inicio"/>
+                <field name="fin"/>
                 <field name="cliente"/>
             </group>
         </form>
@@ -218,9 +219,10 @@
         <field name="arch" type="xml">
             <tree string="Arrendamiento">
                 <field name="name"/>
-                <field name="ubicacion"/>
-                <field name="alojado"/>
-                <field name="usuarios"/>
+                <field name="equipos"/>
+                <field name="tiempo"/>
+                <field name="inicio"/>
+                <field name="fin"/>
                 <field name="cliente"/>
             </tree>
         </field>
@@ -259,49 +261,49 @@
         <record id="action_complemento_usuarios" model="ir.actions.act_window">
             <field name="name">complemento_usuarios</field>
             <field name="res_model">sitecnet.complemento_usuarios</field>
-            <field name="view_type">form</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <record id="action_complemento_equipos" model="ir.actions.act_window">
             <field name="name">complemento_equipos</field>
             <field name="res_model">sitecnet.complemento_equipos</field>
-            <field name="view_type">form</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <record id="action_complemento_proveedor" model="ir.actions.act_window">
             <field name="name">complemento_proveedor</field>
             <field name="res_model">sitecnet.proveedor</field>
-            <field name="view_type">form</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <record id="action_complemento_software" model="ir.actions.act_window">
             <field name="name">complemento_software</field>
             <field name="res_model">sitecnet.software</field>
-            <field name="view_type">form</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <record id="action_complemento_carpetas" model="ir.actions.act_window">
             <field name="name">complemento_carpetas</field>
             <field name="res_model">sitecnet.carpetas</field>
-            <field name="view_type">form</field>
+         <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <record id="action_complemento_arrendamiento" model="ir.actions.act_window">
             <field name="name">complemento_arrendamiento</field>
             <field name="res_model">sitecnet.arrendamiento</field>
-            <field name="view_type">form</field>
+          <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <record id="action_complemento_servicios" model="ir.actions.act_window">
             <field name="name">complemento_servicios</field>
             <field name="res_model">sitecnet.servicios</field>
-            <field name="view_type">form</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
         </record>
 
