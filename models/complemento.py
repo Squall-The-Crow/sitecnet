@@ -12,7 +12,7 @@ class complemento_usuarios(models.Model):
     correo = fields.Char('Correo')
     tier = fields.Many2one('product.template', string='Tier') #Asignar filtro de solo servicios
     equipos = fields.One2many('sitecnet.complemento_equipos', 'usuario', 'Equipos')
-    software = fields.One2many('sitecnet.complemento_software', 'usuario', 'Software permitido')
+    software = fields.One2many('sitecnet.software', 'usuario', 'Software permitido')
     cliente = fields.Many2one('res.partner', 'Cliente')
     carpetas = fields.Many2many('sitecnet.carpetas', 'carpeta_usuario_rel', 'usuario_id', 'carpeta_id', 'Carpetas')
 
@@ -94,6 +94,7 @@ class software(models.Model):
 
 class CarpetaUsuarioRel(models.Model):
     _name = 'carpeta_usuario_rel'
+    _description = "tabla relacional de carpetas y usuarios"
     carpeta_id = fields.Many2one('sitecnet.carpetas', 'Carpeta')
     usuario_id = fields.Many2one('sitecnet.complemento_usuarios', 'Usuario')
     permisos = fields.Selection([
