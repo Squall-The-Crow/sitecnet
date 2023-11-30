@@ -7,7 +7,7 @@ class resPartner(models.Model):
     _description = "Campos extra de clientes"
 
     tecnico = fields.Many2one('res.users', string='Tecnico')
-    software = fields.One2many('sitecnet.complemento_software', 'cliente', string='Software')
+    software = fields.One2many('sitecnet.software', 'cliente', string='Software')
     usuarios = fields.One2many('sitecnet.complemento_usuarios', 'cliente', string='Usuarios')
     equipos = fields.One2many('sitecnet.complemento_equipos', 'cliente', string='Equipos')
     carpetas = fields.One2many('sitecnet.carpetas', 'cliente', string='Carpetas')
