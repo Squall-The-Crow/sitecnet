@@ -95,8 +95,8 @@ class software(models.Model):
 class CarpetaUsuarioRel(models.Model):
     _name = 'carpeta_usuario_rel'
     _description = "tabla relacional de carpetas y usuarios"
-    carpeta_id = fields.Many2one('sitecnet.carpetas', 'Carpeta')
-    usuario_id = fields.Many2one('sitecnet.complemento_usuarios', 'Usuario')
+    carpeta_id = fields.Many2one('sitecnet.carpetas', 'Carpeta', readonly=True)
+    usuario_id = fields.Many2one('sitecnet.complemento_usuarios', 'Usuario', readonly=True)
     permisos = fields.Selection([
     	("Lectura","Lectura"),
     	("Escritura","Escritura"),
