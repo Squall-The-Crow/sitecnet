@@ -14,7 +14,7 @@ class complemento_usuarios(models.Model):
     equipos = fields.One2many('sitecnet.complemento_equipos', 'usuario', 'Equipos')
     software = fields.One2many('sitecnet.software', 'usuario', 'Software permitido')
     cliente = fields.Many2one('res.partner', 'Cliente')
-    carpetas = fields.Many2many('sitecnet.carpetas', 'carpeta_usuario_rel', 'usuario_id', 'carpeta_id', 'Carpetas')
+    carpetas = fields.Many2many('sitecnet.carpetas', 'carpeta_usuario_rel', 'usuario_id', 'carpeta_id', string='Carpetas Relacionadas')
 
 
 
@@ -95,13 +95,17 @@ class software(models.Model):
 class CarpetaUsuarioRel(models.Model):
     _name = 'carpeta_usuario_rel'
     _description = "tabla relacional de carpetas y usuarios"
-    permisos = fields.Selection([
-    	("Lectura","Lectura"),
-    	("Escritura","Escritura"),
-    	("Administrador","Administrador"),
-        ("Bloqueado","Bloqueado")], 
-    	'Permisos')
 
+    carpeta_id = fields.Many2one('sitecnet.carpetas', string='Carpeta')
+    usuario_id = fields.Many2one('sitecnet.complemento_usuarios', string='Usuario')
+    permisos = fields.Selection([
+        ('lectura', 'Lectura'),
+        ('escritura', 'Escritura'),
+        ('propietario', 'Propietario')],
+        string='Nivel de acceso',
+        default='lectura',
+        help='Tipo de relación entre Carpeta y Usuario'
+    )
 
 class carpetas(models.Model):
     _name = 'sitecnet.carpetas'
@@ -113,7 +117,7 @@ class carpetas(models.Model):
     	("Local","Local"),
     	("Nube","Nube")], 
     	'Alojamiento')
-    usuarios = fields.Many2many('sitecnet.complemento_usuarios', 'carpeta_usuario_rel', 'carpeta_id', 'usuario_id', 'Usuarios')
+    usuarios = fields.Many2many('sitecnet.complemento_usuarios', 'carpeta_usuario_rel', 'carpeta_id', 'usuario_id', string='Usuarios Relacionados')
     cliente = fields.Many2one('res.partner', 'Cliente')
 
 class servicios(models.Model):
