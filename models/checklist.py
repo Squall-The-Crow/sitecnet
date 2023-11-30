@@ -32,9 +32,9 @@ class checklist(models.Model):
 
     def generate_recurring_tasks(self):
         for task_list in self:
-            start_date = self.inicio
-            end_date = self.inicio + relativedelta(years=1)
-            cliente = self.cliente
+            start_date = task_list.inicio  # Change here
+            end_date = task_list.inicio + relativedelta(years=1)  # Change here
+            cliente = task_list.cliente  # Change here
 
             if task_list.frequency == 'daily':
                 interval_type = 'days'
@@ -56,14 +56,14 @@ class checklist(models.Model):
             while current_date < end_date:
                 for task in task_list.task_ids:
                     task_date = current_date + relativedelta(**{interval_type: task_list.recurrence_interval})
-                    year, week, _ = task_date.isocalendar()  # Change here
+                    year, week, _ = task_date.isocalendar()
                     self.env['sitecnet.tareas'].create({
                         'name': task.name,
                         'description': task.description,
                         'checklist': task_list.id,
                         'fecha': task_date,
-                        'cliente': cliente.id,
-                        'periodo': str(year) + ' - ' + str(week),  # Change here
+                        'cliente': cliente.id,  # Change here
+                        'periodo': str(year) + ' - ' + str(week),
                     })
                 current_date += relativedelta(**{interval_type: task_list.recurrence_interval})
 
