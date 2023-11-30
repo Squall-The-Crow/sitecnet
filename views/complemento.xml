@@ -236,7 +236,6 @@
             <group>
                 <field name="name"/>
                 <field name="cliente"/>
-                <field name="categoria"/>
                 <field name="terminos"/>
                 <field name="checklist"/>
             </group>
@@ -251,7 +250,6 @@
             <tree string="Servicios">
                 <field name="name"/>
                 <field name="cliente"/>
-                <field name="categoria"/>
                 <field name="terminos"/>
                 <field name="checklist"/>
             </tree>
