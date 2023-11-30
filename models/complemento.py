@@ -94,10 +94,10 @@ class software(models.Model):
 
 class CarpetaUsuarioRel(models.Model):
     _name = 'carpeta_usuario_rel'
-    _description = "tabla relacional de carpetas y usuarios"
+    _description = "Tabla relacional de carpetas y usuarios"
 
-    carpeta_id = fields.Many2one('sitecnet.carpetas', string='Carpeta', primary_key=False)
-    usuario_id = fields.Many2one('sitecnet.complemento_usuarios', string='Usuario', primary_key=False)
+    carpeta_id = fields.Many2one('sitecnet.carpetas', string='Carpeta', index=True)
+    usuario_id = fields.Many2one('sitecnet.complemento_usuarios', string='Usuario', index=True)
     permisos = fields.Selection([
         ('lectura', 'Lectura'),
         ('escritura', 'Escritura'),
@@ -106,8 +106,9 @@ class CarpetaUsuarioRel(models.Model):
         default='lectura',
         help='Tipo de relación entre Carpeta y Usuario'
     )
+
     _sql_constraints = [
-        ('relacion_unico', 'unique(carpeta_id, usuario_id, tipo_relacion)', 'La relación debe ser única por carpeta y usuario.'),
+        ('relacion_unico', 'unique(carpeta_id, usuario_id, permisos)', 'La relación debe ser única por carpeta y usuario.'),
     ]
 
 class carpetas(models.Model):
