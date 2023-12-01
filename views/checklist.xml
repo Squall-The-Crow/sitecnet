@@ -152,7 +152,7 @@
            <record id="action_tareas_template" model="ir.actions.act_window">
             <field name="name">Tareas_template</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">sitecnet.tareas_template/field>
+            <field name="res_model">sitecnet.tareas_template</field>
             <field name="view_mode">tree,form</field>
 
         </record>
