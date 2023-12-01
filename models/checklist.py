@@ -64,7 +64,7 @@ class checklist(models.Model):
                         'cliente': task.cliente.id,
                         'periodo': str(year) + ' - ' + str(week),
                     })
-                start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
+                start_date += relativedelta(**{interval_type: 1})
                 
 
 class tareas(models.Model):
