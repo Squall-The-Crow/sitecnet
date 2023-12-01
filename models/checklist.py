@@ -29,6 +29,7 @@ class Checklist(models.Model):
         help='Number of units between recurrences',
     )
     tareas = fields.One2many('sitecnet.tareas', 'checklist', 'Tareas')
+    tareas_template = fields.One2many('sitecnet.tareas_template', 'checklist', 'Plantilla de tareas')
     inicio = fields.Date('inicio de las tareas')
 
     def generate_recurring_tasks(self):
@@ -53,7 +54,7 @@ class Checklist(models.Model):
 
             while start_date < end_date:
                 _logger.info(f"Start Date: {start_date}")
-                for task in task_list.tareas:
+                for task in task_list.tareas_template:
                     print("Start Date:", start_date)
                     _logger.info(f"Start Date: {start_date}")
                     task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
@@ -73,6 +74,24 @@ class Checklist(models.Model):
 
 class tareas(models.Model):
     _name = 'sitecnet.tareas'
+    _rec_name = 'name'
+    _description = "Campos de checklist"
+    name = fields.Char(string='Actividad', required=True)
+    status = fields.Selection([
+        ("programada","Programada"),
+        ("pendiente","Pendiente"),
+        ("caducada","Caducada"),
+        ("realizada","Realizada"),
+        ("error","Error")],
+         'Estado', default='programada')
+    feedback = fields.Char(string='información')
+    fecha = fields.Date('Fecha de la tarea')
+    checklist = fields.Many2one('sitecnet.checklist', 'checklist asociado')
+    periodo = fields.Char('periodo')
+    cliente = fields.Many2one('res.partner', 'Cliente')
+
+class tareas_template(models.Model):
+    _name = 'sitecnet.tareas_template'
     _rec_name = 'name'
     _description = "Campos de checklist"
     name = fields.Char(string='Actividad', required=True)

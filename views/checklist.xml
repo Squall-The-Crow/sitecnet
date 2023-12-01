@@ -55,6 +55,36 @@
         </record>
     </data>
 
+     <data>
+        <record id="view_tareas_template_form" model="ir.ui.view">
+            <field name="name">sitecnet.tareas_template.form</field>
+            <field name="model">sitecnet.tareas_template</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="cliente"/>
+                            <field name="feedback"/>
+                            <field name="fecha"/>
+                            <field name="checklist"/>
+                            <field name="periodo"/>
+                            <!-- <group class="oe_left oe_button_box" name="state_buttons">
+                            <button string="pendiente" type="object" name="set_state_pendiente" class="oe_stat_button" groups="base.group_user"/>
+                            <button string="realizada" type="object" name="set_state_realizada" class="oe_stat_button" groups="base.group_user"/> 
+                        </group>-->
+                        </group>
+                        <!-- <group>
+                           <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+                        <button string="mandar ticket" type="object" class="oe_highlight" icon="fa-envelope" name="send_ticket"/>
+                        </group> -->
+                    </sheet>
+                </form>
+                <!-- <script type="text/scss" src='sitecnet\static\src\scss\checklist_styles.scss'/> -->
+            </field>
+        </record>
+    </data>
+
     <data>
         <record id="view_checklist_tree" model="ir.ui.view">
             <field name="name">sitecnet.checklist.tree</field>
@@ -88,6 +118,23 @@
             </field>
         </record>
 
+        <record id="view_tareas_template_tree" model="ir.ui.view">
+            <field name="name">sitecnet.tareas_template.tree</field>
+            <field name="model">sitecnet.tareas_template</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="cliente"/>
+                    <field name="feedback"/>
+                    <field name="fecha"/>
+                    <field name="checklist"/>
+                    <field name="periodo"/>
+                    <!-- crear un icono y cambiar el color segun el estado -->
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
         <record id="action_checklist" model="ir.actions.act_window">
             <field name="name">Checklist</field>
             <field name="type">ir.actions.act_window</field>
@@ -103,9 +150,18 @@
 
         </record>
 
+           <record id="action_tareas_template" model="ir.actions.act_window">
+            <field name="name">Tareas_template</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sitecnet.tareas_template/field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
         <menuitem id="sitecnet_menu_root" name="Checklist" sequence="10" web_icon="sitecnet,static/src/img/checklist_icon.png"/>
         <menuitem id="menu_checklist" name="Checklist" parent="sitecnet_menu_root" action="action_checklist"/>
         <menuitem id="menu_tareas" name="Tareas" parent="sitecnet_menu_root" action="action_tareas"/>
+        <menuitem id="menu_tareas_template" name="Tareas_template" parent="sitecnet_menu_root" action="action_tareas_template"/>
 
 </data>
 
