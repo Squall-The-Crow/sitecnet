@@ -64,8 +64,8 @@ class checklist(models.Model):
                         'cliente': task.cliente.id,
                         'periodo': str(year) + ' - ' + str(week),
                     })
-                if task == task_list.tareas[0]:
-                    start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
+                    if task == task_list.tareas[0]:
+                        start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
                 
 
 class tareas(models.Model):
