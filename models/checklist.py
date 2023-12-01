@@ -51,19 +51,19 @@ class checklist(models.Model):
                 continue
 
             # Calcular la fecha de inicio del próximo intervalo
-            current_date = start_date
-            while current_date < end_date:
+            while start_date < end_date:
                 for task in task_list.tareas:
-                    task_date = current_date + relativedelta(**{interval_type: task_list.recurrence_interval})
+                    # Ahora `task` es un solo registro, por lo que puedes acceder a sus campos directamente
+                    task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
                     year, week, _ = task_date.isocalendar()
                     self.env['sitecnet.tareas'].create({
-                        'name': str(task.name) + ' - ' + str(week),  # Cambio aquí
+                        'name': str(task.name) + ' - ' + str(week),
                         'checklist': task_list.id,
                         'fecha': task_date,
-                        'cliente': task.cliente.id,  # Cambio aquí
+                        'cliente': task.cliente.id,
                         'periodo': str(year) + ' - ' + str(week),
-    })
-                current_date += relativedelta(**{interval_type: task_list.recurrence_interval})
+                    })
+                start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
 
 class tareas(models.Model):
     _name = 'sitecnet.tareas'
