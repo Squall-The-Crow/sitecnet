@@ -31,8 +31,7 @@ class checklist(models.Model):
     inicio = fields.Date('inicio de las tareas')
 
     def generate_recurring_tasks(self):
-        for task_list in self:
-            print(f"Processing task list: {task_list.id}")  # Imprime el ID de la lista de tareas
+        for task_list in self:            
             start_date = task_list.inicio
             end_date = task_list.inicio + relativedelta(years=1)
 
@@ -52,21 +51,21 @@ class checklist(models.Model):
                 continue
 
             # Calcular la fecha de inicio del próximo intervalo
-            while start_date < end_date:
-                print(f"Start date: {start_date}")  # Imprime la fecha de inicio
+            while start_date < end_date: 
+                print("Start Date:", start_date)               
                 for task in task_list.tareas:
-                    print(f"Processing task: {task.name}")  # Imprime el nombre de la tarea
-                    task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
+                    task_date = start_date + relativedelta(**{interval_type: task.recurrence_interval})
+                    print("Task Date:", task_date)    
                     year, week, _ = task_date.isocalendar()
                     self.env['sitecnet.tareas'].create({
-                        'name': str(task.name),  # Cambio aquí
+                        'name': str(task.name) + ' - ' + str(week),
                         'checklist': task_list.id,
                         'fecha': task_date,
                         'cliente': task.cliente.id,  
-                        'periodo': str(week),
+                        'periodo': str(year) + ' - ' + str(week),
                         })
-                start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
-                print(f"New start date: {start_date}")  # Imprime la nueva fecha de inicio
+                start_date += relativedelta(**{interval_type: task.recurrence_interval})
+                
 
 class tareas(models.Model):
     _name = 'sitecnet.tareas'
