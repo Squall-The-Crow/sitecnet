@@ -54,7 +54,7 @@ class checklist(models.Model):
             while start_date < end_date: 
                 print("Start Date:", start_date)               
                 for task in task_list.tareas:
-                    task_date = start_date + relativedelta(**{interval_type: task.recurrence_interval})
+                    task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
                     print("Task Date:", task_date)    
                     year, week, _ = task_date.isocalendar()
                     self.env['sitecnet.tareas'].create({
@@ -64,7 +64,7 @@ class checklist(models.Model):
                         'cliente': task.cliente.id,  
                         'periodo': str(year) + ' - ' + str(week),
                         })
-                start_date += relativedelta(**{interval_type: task.recurrence_interval})
+                start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
                 
 
 class tareas(models.Model):
