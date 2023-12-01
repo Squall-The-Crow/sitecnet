@@ -59,11 +59,11 @@ class checklist(models.Model):
                     task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
                     year, week, _ = task_date.isocalendar()
                     self.env['sitecnet.tareas'].create({
-                        'name': str(task.name) + ' - ' + str(week),  # Cambio aquí
+                        'name': str(task.name),  # Cambio aquí
                         'checklist': task_list.id,
                         'fecha': task_date,
                         'cliente': task.cliente.id,  
-                        'periodo': str(year) + ' - ' + str(week),
+                        'periodo': str(week),
                         })
                 start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
                 print(f"New start date: {start_date}")  # Imprime la nueva fecha de inicio
