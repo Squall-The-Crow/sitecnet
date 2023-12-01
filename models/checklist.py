@@ -6,12 +6,11 @@ from datetime import datetime, timedelta
 import logging
 _logger = logging.getLogger(__name__)
 
-class checklist(models.Model):
+class Checklist(models.Model):
     _name = 'sitecnet.checklist'
     _rec_name = 'name'
     _description = "Checklist de atención"
 
-########Campos De sistema##############
     name = fields.Char(string='Nombre de Checklist', required=True)
     cliente = fields.Many2one('res.partner', 'Cliente')
     frequency = fields.Selection(
@@ -33,7 +32,7 @@ class checklist(models.Model):
     inicio = fields.Date('inicio de las tareas')
 
     def generate_recurring_tasks(self):
-        for task_list in self:            
+        for task_list in self:
             start_date = task_list.inicio
             end_date = task_list.inicio + relativedelta(years=1)
 
@@ -52,24 +51,24 @@ class checklist(models.Model):
             else:
                 continue
 
-            # Calcular la fecha de inicio del próximo intervalo
             while start_date < end_date:
-                print("Start Date:", start_date) 
-                _logger.info(f"Start Date: {start_date}")              
+                _logger.info(f"Start Date: {start_date}")
                 for task in task_list.tareas:
+                    print("Start Date:", start_date)
+                    _logger.info(f"Start Date: {start_date}")
                     task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
-                    _logger.info(f"Task Date: {task_date}")
-                    print("Task Date:", task_date)    
+                    print("Task Date:", task_date) 
                     year, week, _ = task_date.isocalendar()
                     self.env['sitecnet.tareas'].create({
-                        'name': str(task.name) + ' - ' + str(week),
+                        'name': f"{task.name} - {week}",
                         'checklist': task_list.id,
                         'fecha': task_date,
                         'cliente': task.cliente.id,
-                        'periodo': str(year) + ' - ' + str(week),
+                        'periodo': f"{year} - {week}",
                     })
-                    if task == task_list.tareas[0]:
-                        start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
+
+                # Incrementa la fecha de inicio al final de cada iteración del bucle exterior
+                start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
                 
 
 class tareas(models.Model):
