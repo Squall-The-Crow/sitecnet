@@ -3,6 +3,8 @@
 from odoo import models, fields, api
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, timedelta
+import logging
+_logger = logging.getLogger(__name__)
 
 class checklist(models.Model):
     _name = 'sitecnet.checklist'
@@ -52,9 +54,11 @@ class checklist(models.Model):
 
             # Calcular la fecha de inicio del próximo intervalo
             while start_date < end_date:
-                print("Start Date:", start_date)               
+                print("Start Date:", start_date) 
+                _logger.info(f"Start Date: {start_date}")              
                 for task in task_list.tareas:
                     task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
+                    _logger.info(f"Task Date: {task_date}")
                     print("Task Date:", task_date)    
                     year, week, _ = task_date.isocalendar()
                     self.env['sitecnet.tareas'].create({
