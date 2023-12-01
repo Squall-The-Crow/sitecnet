@@ -60,13 +60,16 @@ class Checklist(models.Model):
                     task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
                     print("Task Date:", task_date) 
                     year, week, _ = task_date.isocalendar()
-                    self.env['sitecnet.tareas'].create({
-                        'name': f"{task.name} - {week}",
-                        'checklist': task_list.id,
-                        'fecha': task_date,
-                        'cliente': task.cliente.id,
-                        'periodo': f"{year} - {week}",
-                    })
+                    # si ya se genero una tarea no volver a duplicarla y solo crear las tareas que no existan
+                    if not self.env['sitecnet.tareas'].search([('name', '=', f"{task.name} - {week}"),('cliente', '=', task.cliente.id)]):
+                  
+                        self.env['sitecnet.tareas'].create({
+                            'name': f"{task.name} - {week}",
+                            'checklist': task_list.id,
+                            'fecha': task_date,
+                            'cliente': task.cliente.id,
+                            'periodo': f"{year} - {week}",
+                        })
 
                 # Incrementa la fecha de inicio al final de cada iteración del bucle exterior
                 start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
