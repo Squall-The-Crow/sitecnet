@@ -32,6 +32,7 @@ class checklist(models.Model):
 
     def generate_recurring_tasks(self):
         for task_list in self:
+            print(f"Processing task list: {task_list.id}")  # Imprime el ID de la lista de tareas
             start_date = task_list.inicio
             end_date = task_list.inicio + relativedelta(years=1)
 
@@ -52,18 +53,16 @@ class checklist(models.Model):
 
             # Calcular la fecha de inicio del próximo intervalo
             while start_date < end_date:
+                print(f"Start date: {start_date}")  # Imprime la fecha de inicio
                 for task in task_list.tareas:
-                    # Ahora `task` es un solo registro, por lo que puedes acceder a sus campos directamente
+                    print(f"Processing task: {task.name}")  # Imprime el nombre de la tarea
                     task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
                     year, week, _ = task_date.isocalendar()
-                    self.env['sitecnet.tareas'].create({
-                        'name': str(task.name) + ' - ' + str(week),
-                        'checklist': task_list.id,
-                        'fecha': task_date,
-                        'cliente': task.cliente.id,
-                        'periodo': str(year) + ' - ' + str(week),
-                    })
+
+                    # ... Resto del código ...
+
                 start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
+                print(f"New start date: {start_date}")  # Imprime la nueva fecha de inicio
 
 class tareas(models.Model):
     _name = 'sitecnet.tareas'
