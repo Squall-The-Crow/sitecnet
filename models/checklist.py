@@ -51,7 +51,7 @@ class checklist(models.Model):
                 continue
 
             # Calcular la fecha de inicio del próximo intervalo
-            while start_date < end_date: 
+            while start_date < end_date:
                 print("Start Date:", start_date)               
                 for task in task_list.tareas:
                     task_date = start_date + relativedelta(**{interval_type: task_list.recurrence_interval})
@@ -61,9 +61,9 @@ class checklist(models.Model):
                         'name': str(task.name) + ' - ' + str(week),
                         'checklist': task_list.id,
                         'fecha': task_date,
-                        'cliente': task.cliente.id,  
+                        'cliente': task.cliente.id,
                         'periodo': str(year) + ' - ' + str(week),
-                        })
+                    })
                 start_date += relativedelta(**{interval_type: task_list.recurrence_interval})
                 
 
