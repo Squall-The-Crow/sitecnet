@@ -10,7 +10,7 @@ class complemento_usuarios(models.Model):
     depto = fields.Char('Departamento')
     telefono = fields.Char('Telefono')
     correo = fields.Char('Correo')
-    tier = fields.Many2one('product.product', string='Tier') #Asignar filtro de solo servicios
+    tier = fields.Many2one('product.template', string='Tier') #Asignar filtro de solo servicios
     equipos = fields.One2many('sitecnet.complemento_equipos', 'usuario', 'Equipos')
     software = fields.One2many('sitecnet.software', 'usuario', 'Software permitido')
     cliente = fields.Many2one('res.partner', 'Cliente')
