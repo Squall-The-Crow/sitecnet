@@ -21,6 +21,7 @@
           </group>
           <group>
             <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
+            <field name="carpetas_relacion"/>
             <field name="equipos" domain="[('cliente', '=', cliente)]"/>
             <field name="software" domain="[('cliente', '=', cliente)]"/>
           </group>
@@ -177,8 +178,9 @@
                 <field name="name"/>
                 <field name="ubicacion"/>
                 <field name="alojado"/>
-                <field name="usuarios"/>
                 <field name="cliente"/>
+                <field name="usuarios"/>                
+                <field name="usuarios_relacion"/>
             </group>
         </form>
       </field>

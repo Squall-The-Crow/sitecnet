@@ -15,7 +15,20 @@ class complemento_usuarios(models.Model):
     software = fields.One2many('sitecnet.software', 'usuario', 'Software permitido')
     cliente = fields.Many2one('res.partner', 'Cliente')
     carpetas = fields.Many2one('sitecnet.carpetas', string='Carpetas Relacionadas')
+    carpetas_relacion = fields.One2many('sitecnet.usuario_carpeta_relacion', 'usuario_id', 'Carpetas Relacionadas')
 
+class UsuarioCarpetaRelacion(models.Model):
+    _name = 'sitecnet.usuario_carpeta_relacion'
+    _description = "Relación entre usuarios y carpetas"
+
+    usuario_id = fields.Many2one('sitecnet.complemento_usuarios', 'Usuario')
+    carpeta_id = fields.Many2one('sitecnet.carpetas', 'Carpeta')
+    tipo_relacion = fields.Selection([
+    	("lectura","Lectura"),
+    	("escritura","Escritura"),
+    	("administrador","Administrador"),
+        ("bloqueado","Bloqueado")], 
+    	'Acceso')
 
 
 class complemento_equipos(models.Model):
@@ -105,6 +118,7 @@ class carpetas(models.Model):
     	'Alojamiento')
     usuarios = fields.Many2one('sitecnet.complemento_usuarios',  string='Usuarios Relacionados')
     cliente = fields.Many2one('res.partner', 'Cliente')
+    usuarios_relacion = fields.One2many('sitecnet.usuario_carpeta_relacion', 'carpeta_id', 'Usuarios Relacionados')
 
 class servicios(models.Model):
     _name = 'sitecnet.servicios'
