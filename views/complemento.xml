@@ -20,12 +20,11 @@
                   <field name="cliente"/>                
                 </group>
               </group>                
-            </group>
-            <group>
+           
               <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
               <field name="equipos" domain="[('cliente', '=', cliente)]"/>
               <field name="software" domain="[('cliente', '=', cliente)]"/>
-            </group>
+               </group>
         </form>
       </field>
     </record>
