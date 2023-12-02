@@ -7,16 +7,18 @@
       <field name="model">sitecnet.complemento_usuarios</field>
       <field name="arch" type="xml">
         <form string="Usuarios">
-                <group>
-                  <field name="name"/>
-                  <field name="depto"/>
-                  <field name="telefono"/>
-                </group>
-                <group>
-                  <field name="correo"/>
-                  <field name="tier"/> <!--Asignar filtro de solo servicios-->                  
-                  <field name="cliente"/>                
-                </group>
+          <group>
+            <group>
+                <field name="name"/>
+                <field name="depto"/>
+                <field name="telefono"/>
+            </group>
+            <group>
+                <field name="correo"/>
+                <field name="tier"/> <!--Asignar filtro de solo servicios-->                  
+                <field name="cliente"/>                
+            </group>
+          </group>
                   <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
                   <field name="equipos" domain="[('cliente', '=', cliente)]"/>
                   <field name="software" domain="[('cliente', '=', cliente)]"/>
