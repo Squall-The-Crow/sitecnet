@@ -19,11 +19,11 @@
                   <field name="tier"/> <!--Asignar filtro de solo servicios-->                  
                   <field name="cliente"/>                
                 </group>
-              </group>
-                <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
-                <field name="equipos" domain="[('cliente', '=', cliente)]"/>
-                <field name="software" domain="[('cliente', '=', cliente)]"/>
+              </group>                
             </group>
+            <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
+            <field name="equipos" domain="[('cliente', '=', cliente)]"/>
+            <field name="software" domain="[('cliente', '=', cliente)]"/>
         </form>
       </field>
     </record>
