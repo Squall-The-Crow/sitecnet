@@ -8,15 +8,23 @@
       <field name="arch" type="xml">
         <form string="Usuarios">
             <group>
-                <field name="name"/>
-                <field name="depto"/>
-                <field name="telefono"/>
-                <field name="correo"/>
-                <field name="tier"/>
-                <field name="equipos"/>
-                <field name="software"/>
-                <field name="cliente"/>
-                <field name="carpetas"/>
+              <group>
+                <group>
+                  <field name="name"/>
+                  <field name="depto"/>
+                  <field name="telefono"/>
+                </group>
+                <group>
+                  <field name="correo"/>
+                  <field name="tier"/> <!--Asignar filtro de solo servicios-->                  
+                  <field name="cliente"/>                
+                </group>
+              </group>
+              <group>
+                <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
+                <field name="equipos" domain="[('cliente', '=', cliente)]"/>
+                <field name="software" domain="[('cliente', '=', cliente)]"/>
+              </group>
             </group>
         </form>
       </field>
@@ -28,15 +36,11 @@
       <field name="arch" type="xml">
         <tree string="Usuarios">
             <field name="name"/>
-            <field name="depto"/>
+            <field name="cliente"/>
             <field name="telefono"/>
             <field name="correo"/>
-            <field name="tier"/>
-            <field name="equipos"/>
-            <field name="software"/>
-            <field name="cliente"/>
-            <field name="carpetas"/>
-        </tree>
+            <field name="tier"/>          
+          </tree>
       </field>
     </record>
 
