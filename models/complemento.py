@@ -95,7 +95,8 @@ class software(models.Model):
     name = fields.Char('Nombre')
     licencia = fields.Char('Licencia')
     cliente = fields.Many2one('res.partner', 'Cliente')
-    renovacion = fields.Char('Periodo de renovación')#Asignar filtro de solo perpetual = false
+    renovacion = fields.Char('Periodo de renovación')#Asignar filtro de solo perpetual = false y calendarizar renovacion
+    
     perpetual = fields.Boolean('Perpetual')
     adquisicion = fields.Selection([
     	("Rentado","Rentado"),

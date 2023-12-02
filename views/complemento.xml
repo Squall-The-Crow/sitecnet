@@ -21,9 +21,32 @@
           </group>
           <group>
             <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
-            <field name="carpetas_relacion"/>
-            <field name="equipos" domain="[('cliente', '=', cliente)]"/>
-            <field name="software" domain="[('cliente', '=', cliente)]"/>
+            <field name="carpetas_relacion" widget="many2many">
+            <tree string="Relación de carpetas">
+                <field name="usuario_id"/>
+                <field name="carpeta_id"/>
+                <field name="tipo_relacion"/>
+              </tree>
+            </field>
+            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">         <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
+            <tree string="Equipos">
+                <field name="name"/>
+                <field name="tipo"/>
+                <field name="agente_inventario" string='A-I'/>
+                <field name="agente_soporte" string='A-Sop'/>                
+                <field name="agente_seguridad" string='A-Seg'/>
+                <field name="agente_seguridad_red" string='A-SR'/>
+                <field name="agente_seguridad_dlp" string='A-DLP'/>
+                <field name="agente_remoto_alternativo" string='A-RM'/>
+              </tree>
+              </field>
+            <field name="software" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">         <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
+            <tree string="Software">
+                <field name="name"/>
+                <field name="licencia"/>
+                <field name="perpetual"/>
+              </tree>
+              </field>
           </group>
         </form>
       </field>
