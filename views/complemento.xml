@@ -28,7 +28,7 @@
                 <field name="tipo_relacion"/>
               </tree>
             </field>
-            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">         <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
+            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
             <tree string="Equipos">
                 <field name="name"/>
                 <field name="tipo"/>
@@ -40,13 +40,13 @@
                 <field name="agente_remoto_alternativo" string='A-RM'/>
               </tree>
               </field>
-            <field name="software" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">         <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
+            <field name="software" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">    
             <tree string="Software">
                 <field name="name"/>
                 <field name="licencia"/>
                 <field name="perpetual"/>
               </tree>
-              </field>
+              </field>              
           </group>
         </form>
       </field>
