@@ -38,6 +38,7 @@
                 <field name="agente_seguridad_red" string='A-SR'/>
                 <field name="agente_seguridad_dlp" string='A-DLP'/>
                 <field name="agente_remoto_alternativo" string='A-RM'/>
+                <field name="autenticacion" string='Auth'/>  
               </tree>
               </field>
             <field name="software" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">    
@@ -72,6 +73,7 @@
       <field name="arch" type="xml">
         <form string="Equipos">
             <group>
+              <group>
                 <field name="name"/>
                 <field name="cliente"/>
                 <field name="tipo"/>
@@ -82,16 +84,28 @@
                 <field name="garantia"/>
                 <field name="arrendamiento"/>
                 <field name="nombre"/>
+              </group>
+              <group>
                 <field name="usuario"/>
+                <field name="autenticacion"/>
+                <field name="registrado"/>
                 <field name="agente_inventario"/>
                 <field name="agente_soporte"/>
                 <field name="agente_seguridad"/>
                 <field name="agente_seguridad_red"/>
                 <field name="agente_seguridad_dlp"/>
-                <field name="agente_remoto_alternativo"/>
-                <field name="autenticacion"/>
-                <field name="registrado"/>
-            </group>
+                <field name="agente_remoto_alternativo"/>  
+              </group>
+            </group>            
+            <page name='software' string='Software'>
+                <field name="software">
+                <tree string="Software" editable="bottom">
+                    <field name="name"/>
+                    <field name="licencia"/>
+                    <field name="perpetual"/>
+                  </tree>
+                </field>
+            </page>
         </form>
       </field>
     </record>
@@ -104,12 +118,6 @@
             <field name="name"/>
             <field name="cliente"/>
             <field name="tipo"/>
-            <field name="fecha_compra"/>
-            <field name="factura"/>
-            <field name="adquisicion"/>
-            <field name="proveedor"/>
-            <field name="garantia"/>
-            <field name="arrendamiento"/>
             <field name="nombre"/>
             <field name="usuario"/>
             <field name="agente_inventario"/>
@@ -118,8 +126,6 @@
             <field name="agente_seguridad_red"/>
             <field name="agente_seguridad_dlp"/>
             <field name="agente_remoto_alternativo"/>
-            <field name="autenticacion"/>
-            <field name="registrado"/>
         </tree>
       </field>
     </record>
@@ -171,6 +177,7 @@
                 <field name="proveedor"/>
                 <field name="perpetual"/>
                 <field name="adquisicion"/>
+                <field name="equipos"/>
             </group>
         </form>
       </field>
