@@ -19,9 +19,11 @@
                 <field name="cliente"/>                
             </group>
           </group>
-                  <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
-                  <field name="equipos" domain="[('cliente', '=', cliente)]"/>
-                  <field name="software" domain="[('cliente', '=', cliente)]"/>
+          <group>
+            <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
+            <field name="equipos" domain="[('cliente', '=', cliente)]"/>
+            <field name="software" domain="[('cliente', '=', cliente)]"/>
+          </group>
         </form>
       </field>
     </record>
