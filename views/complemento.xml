@@ -21,14 +21,14 @@
           </group>
           <group>
             <field name="carpetas" domain="[('cliente', '=', cliente)]"/>
-            <field name="carpetas_relacion" widget="many2many">
+            <field name="carpetas_relacion" >
             <tree string="Relación de carpetas" editable="bottom">
                 <field name="usuario_id"/>
                 <field name="carpeta_id"/>
                 <field name="tipo_relacion"/>
               </tree>
             </field>
-            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
+            <field name="equipos" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
             <tree string="Equipos" editable="bottom">
                 <field name="name"/>
                 <field name="tipo"/>
@@ -40,7 +40,7 @@
                 <field name="agente_remoto_alternativo" string='A-RM'/>
               </tree>
               </field>
-            <field name="software" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">    
+            <field name="software" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">    
             <tree string="Software" editable="bottom">
                 <field name="name"/>
                 <field name="licencia"/>
