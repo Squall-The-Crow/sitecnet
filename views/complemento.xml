@@ -96,7 +96,8 @@
                 <field name="agente_seguridad_dlp"/>
                 <field name="agente_remoto_alternativo"/>  
               </group>
-            </group>            
+            </group>
+            <notebook colspan='4'>         
             <page name='software' string='Software'>
                 <field name="software">
                 <tree string="Software" editable="bottom">
@@ -106,6 +107,7 @@
                   </tree>
                 </field>
             </page>
+            </notebook>
         </form>
       </field>
     </record>
