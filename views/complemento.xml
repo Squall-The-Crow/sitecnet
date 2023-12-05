@@ -12,6 +12,7 @@
                 <field name="name"/>
                 <field name="depto"/>
                 <field name="telefono"/>
+                <field name="telefono2"/>
             </group>
             <group>
                 <field name="correo"/>
