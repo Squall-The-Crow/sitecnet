@@ -318,7 +318,7 @@
                 <field name="frequency"/>
                 <field name="inicio"/>
               </tree>
-              </field>              
+              </field>
             </group>
         </form>
       </field>
