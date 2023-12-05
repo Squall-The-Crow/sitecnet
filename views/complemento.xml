@@ -162,12 +162,9 @@
       <field name="arch" type="xml">
         <tree string="Proveedores">
             <field name="name"/>
-            <field name="direccion"/>
             <field name="telefono"/>
             <field name="correo"/>
-            <field name="telefono2"/>
             <field name="horario"/>
-            <field name="notas"/>
         </tree>
       </field>
     </record>
@@ -178,14 +175,26 @@
       <field name="arch" type="xml">
         <form string="Software">
             <group>
+              <group>
                 <field name="name"/>
                 <field name="licencia"/>
                 <field name="cliente"/>
                 <field name="renovacion"/>
+              </group>
+              <group>
                 <field name="proveedor"/>
                 <field name="perpetual"/>
                 <field name="adquisicion"/>
-                <field name="equipos"/>
+              </group>
+            </group>
+            <group>
+            <field name="equipos" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
+            <tree string="Equipos" editable="bottom">
+                <field name="name"/>
+                <field name="tipo"/>
+                <field name="usuario"/>
+              </tree>
+              </field>              
             </group>
         </form>
       </field>
@@ -200,8 +209,6 @@
             <field name="licencia"/>
             <field name="cliente"/>
             <field name="renovacion"/>
-            <field name="proveedor"/>
-            <field name="perpetual"/>
             <field name="adquisicion"/>
         </tree>
       </field>
@@ -213,12 +220,22 @@
       <field name="arch" type="xml">
         <form string="Carpetas">
             <group>
+              <group>
                 <field name="name"/>
                 <field name="ubicacion"/>
                 <field name="alojado"/>
+              </group>
+              <group>
                 <field name="cliente"/>
-                <field name="usuarios"/>                
-                <field name="usuarios_relacion"/>
+                </group>
+              </group>
+            <group>
+            <field name="usuarios_relacion" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">    
+            <tree string="Usuarios" editable="bottom">
+                <field name="usuario_id"/>
+                <field name="tipo_relacion"/>
+              </tree>
+              </field>              
             </group>
         </form>
       </field>
@@ -232,8 +249,6 @@
                 <field name="name"/>
                 <field name="ubicacion"/>
                 <field name="alojado"/>
-                <field name="usuarios"/>
-                <field name="cliente"/>
             </tree>
         </field>
     </record>
@@ -244,12 +259,25 @@
       <field name="arch" type="xml">
         <form string="Arrendamiento">
             <group>
+              <group>
                 <field name="name"/>
-                <field name="equipos"/>
+                <field name="cliente"/>
+              </group>
+              <group>
                 <field name="tiempo"/>
                 <field name="inicio"/>
                 <field name="fin"/>
-                <field name="cliente"/>
+                </group>
+              </group>
+            <group>
+            <field name="equipos" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">    
+            <tree string="Equipos">
+                <field name="name"/>
+                <field name="tipo"/>
+                <field name="usuario"/>
+                <field name="fecha_compra"/>
+              </tree>
+              </field>              
             </group>
         </form>
       </field>
@@ -261,7 +289,6 @@
         <field name="arch" type="xml">
             <tree string="Arrendamiento">
                 <field name="name"/>
-                <field name="equipos"/>
                 <field name="tiempo"/>
                 <field name="inicio"/>
                 <field name="fin"/>
@@ -276,10 +303,22 @@
       <field name="arch" type="xml">
         <form string="Servicios">
             <group>
+              <group>
                 <field name="name"/>
+              </group>
+              <group>
                 <field name="cliente"/>
-                <field name="terminos"/>
-                <field name="checklist"/>
+                </group>
+              </group>
+            <group>
+            <field name="terminos"/>
+            <field name="checklist" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">    
+            <tree string="Equipos">
+                <field name="name"/>
+                <field name="frequency"/>
+                <field name="inicio"/>
+              </tree>
+              </field>              
             </group>
         </form>
       </field>
@@ -292,8 +331,6 @@
             <tree string="Servicios">
                 <field name="name"/>
                 <field name="cliente"/>
-                <field name="terminos"/>
-                <field name="checklist"/>
             </tree>
         </field>
         </record>
