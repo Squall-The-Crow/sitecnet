@@ -230,7 +230,7 @@
                 </group>
               </group>
             <group>
-            <field name="usuarios_relacion" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">    
+            <field name="usuarios_relacion">
             <tree string="Usuarios" editable="bottom">
                 <field name="usuario_id"/>
                 <field name="tipo_relacion"/>
