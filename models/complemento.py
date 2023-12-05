@@ -9,6 +9,7 @@ class complemento_usuarios(models.Model):
     name = fields.Char('Nombre')
     depto = fields.Char('Departamento')
     telefono = fields.Char('Telefono')
+    telefono2 = fields.Char('Telefono Secundario')
     correo = fields.Char('Correo')
     tier = fields.Many2one('product.product', string='Tier')
     equipos = fields.One2many('sitecnet.complemento_equipos', 'usuario', 'Equipos')
