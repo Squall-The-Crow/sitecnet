@@ -62,7 +62,7 @@ class complemento_equipos(models.Model):
     agente_remoto_alternativo = fields.Boolean('AG remoto alt')
     autenticacion = fields.Char('metodo de autenticacion')
     registrado = fields.Boolean('Registrado en forma de autenticacion')
-    software = fields.Many2many('sitecnet.software', 'Software_instalado')
+    software = fields.Many2many('sitecnet.software', string='Software instalado')
 
 
 
@@ -98,7 +98,7 @@ class software(models.Model):
     licencia = fields.Char('Licencia')
     cliente = fields.Many2one('res.partner', 'Cliente')
     renovacion = fields.Char('Periodo de renovación')#Asignar filtro de solo perpetual = false y calendarizar renovacion
-    equipos = fields.Many2many('sitecnet.complemento_equipos', 'Equipos_instalados')
+    equipos = fields.Many2many('sitecnet.complemento_equipos', string='Equipos instalados')
     perpetual = fields.Boolean('Perpetual')
     adquisicion = fields.Selection([
     	("Rentado","Rentado"),
